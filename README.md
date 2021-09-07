@@ -1,24 +1,50 @@
-# README
+# Emo eats
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+今何が食べたいのかわからない時に、その時の感情にあった感情タグを選んで検索することでお店を探せる<br>
+＆食べたあとその時の気持ちと併せてお店を投稿することでみんなで食べたい！の気持ちを共有する投稿型お店探しアプリです。
+利用方法
+1.閲覧-お店探し
+　TOPページの検索タグの感情から今の食べたい気持ちを選択（さっぱり系、健康など）して検索
+　↓
+ あなたの気持ちにあったお店の投稿を表示！
+ 
+2.投稿-感情の共有
+　あなたが行ったおいしいお店を感情と一緒に投稿！
+ ↓
+ 他のユーザーからのわかる！（いいね機能）をもらおう！Cancel changes
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+あなたのどんな食べたい！にも寄り添う投稿型お店探しアプリ
 
-* System dependencies
+### テーマを選んだ理由
+お昼時や夕飯時に、お店で何か食べたいけど、何が食べたいかわからない・・・そんな経験が誰にでもあるはず！<br>
+そんな時、実は少し頭の片隅にあるのが「さっぱりしたものが食べたい・・」「今日はガッツリ食べたい！！」<br>
+というような感情だと思います。<br>
+でも、その感情は言われてみないとわからないもの・・・<br>
+感情を使って検索できるサイトがあれば、感情を具体化できてきっと満足できるお店で食事ができる！と考えました。<br>
+投稿をする人がどんな感情だからそのお店に行きたくなったのか？<br>
+そんな感情と一緒に投稿を集めれば、どんな人の感情にも寄り添える素敵なサイトができるのではないか？<br>
+と思い、アプリを作りました。<br>
 
-* Configuration
+### ターゲットユーザ
+年齢層を問わず美味しい食事を食べたい人
 
-* Database creation
+### 主な利用シーン
+どこかで何かを食べたいけれども、何を食べたいかがわからない人のお店探し
 
-* Database initialization
+## 設計書
+<...>
 
-* How to run the test suite
+## チャレンジ要素一覧
+[Google スプレッドシート](https://docs.google.com/spreadsheets/d/1LOVrXFbPOSI3NcVhj2ao_5mYSttPcsvzeQ9MAkW-CbY/edit#gid=0) に遷移します。
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
 
-* ...
