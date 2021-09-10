@@ -36,7 +36,7 @@
 どこかで何かを食べたいけれども、何を食べたいかがわからない人のお店探し
 
 ## 設計書
-<...>
+[ER図](https://app.diagrams.net/#G1TUX24gSguFUgLm5Xzc7GsJkcIf1Lw94L) に遷移します。
 
 ## チャレンジ要素一覧
 [Google スプレッドシート](https://docs.google.com/spreadsheets/d/1LOVrXFbPOSI3NcVhj2ao_5mYSttPcsvzeQ9MAkW-CbY/edit#gid=0) に遷移します。
