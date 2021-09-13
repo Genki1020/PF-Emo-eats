@@ -37,7 +37,7 @@
 
 ## 設計書
 [ER図](https://app.diagrams.net/#G1TUX24gSguFUgLm5Xzc7GsJkcIf1Lw94L) に遷移します。<br>
-[テーブル提議書](https://docs.google.com/spreadsheets/d/1cuKqyvvXVH9mdSimJ76pUcbme-NRPVJ6Zj18zdHHHKY/edit#gid=658039529) に遷移します。
+[テーブル提議書](https://docs.google.com/spreadsheets/d/1cuKqyvvXVH9mdSimJ76pUcbme-NRPVJ6Zj18zdHHHKY/edit#gid=658039529) に遷移します。<br>
 [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1xERoBc9UvHV6DS-BprZwi--5DPhp-fsEkng6-V38Wag/edit#gid=2133469642) に遷移します。
 
 
