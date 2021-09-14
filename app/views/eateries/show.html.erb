@@ -1,0 +1,12 @@
+<div class="post-body">
+  <%= attachment_image_tag @eatery, :image %>
+  <p>ショップ名：<%= @eatery.eatery_name %></p>
+  <p>説明：<%= @eatery.report %></p>
+  <p>ユーザーネーム：<%= @eatery.user.account %></p>
+  <p>投稿日時：<%= @eatery.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @eatery.user == current_user %>
+    <%= link_to "削除", eatery_path(@eatery), method: :delete %>
+  <% end %>
+
+
+

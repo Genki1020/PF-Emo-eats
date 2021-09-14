@@ -1,0 +1,2 @@
+class Emo < ApplicationRecord
+end
