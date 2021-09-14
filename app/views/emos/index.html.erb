@@ -1,0 +1,37 @@
+<h4><span class="badge badge-pill badge-dark">エモ追加</span></h4>
+<% if @emo.errors.any? %>
+    <%= @emo.errors.count %>件のエラーが発生しました
+    <% @emo.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+<% end %>
+
+<br>
+<div class="col-lg-10">
+ <%= form_for @emo, url: emos_path, local: true do |f| %>
+ <tbody>
+  <th></th><th><%= f.text_field :emo_name, placeholder: "あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツ", size: 75 %>を食べたい！</th>
+  <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
+ </tbody>
+ <% end %>
+</div>
+
+<br>
+<div class="col-lg-md-5">
+<table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>エモ</th>
+        </tr>
+      </thead>
+     <% @emos.each do |emo| %>
+      <tbody>
+       <tr>
+        <td><%= emo.emo_name %></td>
+        <td><%= link_to "編集する", emo_path(emo),class:"btn btn-success" %></td>
+        <td><%#= link_to "削除する", admin_genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %></td>
+       </tr>
+      </tbody>
+      <% end %>
+</table>
+</div>
