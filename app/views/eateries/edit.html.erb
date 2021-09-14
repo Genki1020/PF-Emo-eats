@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>エモ投稿編集</h1>
+          <%= form_with model: @eatery, local:true do |f| %>
+        <p>店舗名<br>
+          <%= f.text_field :eatery_name %></p>
+        <p>レポート<br>
+          <%= f.text_area :report %></p>
+        <p>住所</p>
+          <%= f.text_area :adress%>
+          <%= f.submit 'Update Report' ,class:"btn btn-success"%>
+          <% end %>
+         <p><%= link_to "Show", eatery_path(@eatery) %> | <%= link_to "Back", eateries_path %></p>
+    </div>
+  </div>
+</div>
