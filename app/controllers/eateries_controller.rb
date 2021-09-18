@@ -7,6 +7,7 @@ class EateriesController < ApplicationController
     @eatery = Eatery.new(eatery_params)
     @eatery.user_id = current_user.id
     if @eatery.save
+      flash[:notice] = "投稿完了"
       redirect_to eateries_path
     else
       render :new
@@ -19,10 +20,12 @@ class EateriesController < ApplicationController
 
   def show
     @eatery = Eatery.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
       @eatery =  Eatery.find(params[:id])
+      @emo =  Emo.find(params[:id])
       if @eatery.user == current_user
           render "edit"
       else
@@ -52,7 +55,7 @@ class EateriesController < ApplicationController
    private
 
   def eatery_params
-    params.require(:eatery).permit(:image, :user_id,:eatery_name,:address, :report)
+    params.require(:eatery).permit(:image, :user_id,:eatery_name,:address,:emo_id,:report,:emo)
   end
 
 end

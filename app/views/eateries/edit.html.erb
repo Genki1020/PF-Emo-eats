@@ -3,15 +3,17 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>エモ投稿編集</h1>
           <%= form_with model: @eatery, local:true do |f| %>
+           <p>エモ<br>
+           <%= f.collection_select :emo_id, Emo.all, :id, :emo_name,{prompt: "選択してください"} %>を食べたい！</p>
         <p>店舗名<br>
           <%= f.text_field :eatery_name %></p>
         <p>レポート<br>
           <%= f.text_area :report %></p>
         <p>住所</p>
-          <%= f.text_area :adress%>
-          <%= f.submit 'Update Report' ,class:"btn btn-success"%>
+          <%= f.text_area :address%>
+          <%= f.submit '更新する' ,class:"btn btn-success"%>
           <% end %>
-         <p><%= link_to "Show", eatery_path(@eatery) %> | <%= link_to "Back", eateries_path %></p>
+         <p><%= link_to "Back", eatery_path(@eatery) %></p>
     </div>
   </div>
 </div>

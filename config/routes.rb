@@ -5,6 +5,11 @@ Rails.application.routes.draw do
  root to: 'homes#top'
  get 'home/about'
 resources :users
-resources :eateries
 resources :emos
+resources :eateries do
+resource :favorites, only: [:create, :destroy]
+resources :post_comments, only: [:create, :destroy]
+end
+
+
 end

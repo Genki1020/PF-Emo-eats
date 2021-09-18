@@ -20,10 +20,9 @@
      <header class="p-3 mb-2 bg-dark text-white">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-
-
-           <%= link_to "Emo-eats", root_path , class: 'navbar-brand'%>
-
+         <h2 class="nav navbar-nav navbar-left title" style="font-size: 30px;">
+          <%= link_to image_tag("赤、心拍・アイコン、医療、ロゴ", class:"heaedr_logo"), eateries_path, class: "text-dark"%>
+         </h2>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,13 +33,13 @@
      <% if user_signed_in? %>
 
       <li class="nav-item">
-        <%= link_to "エモ投稿", eateries_path , class: 'fas fa-users nav-link text-light'%>
+        <%= link_to "Emo", eateries_path , class: 'fab fa-gratipay nav-link text-light'%>
       </li>
       <li class="nav-item">
         <%= link_to "User", user_path(current_user.id) , class: 'fas fa-home nav-link text-light ' %>
       </li>
       <li class="nav-item">
-        <%= link_to "Emos", emos_path , class: 'fas fa-book-open nav-link text-light' %>
+        <%= link_to "Emos-index", emos_path , class: 'fas fa-book-open nav-link text-light' %>
       </li>
       <li class="nav-item">
        <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %>
@@ -75,7 +74,7 @@
        <%= yield %>
       </div>
     </main>
-    
+
 
 
   </body>
