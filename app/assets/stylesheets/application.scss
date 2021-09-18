@@ -14,3 +14,10 @@
  *= require_self
  */
  @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+.heaedr_logo {
+ width: 150px;
+ height: 90px;
+}

@@ -1,38 +1,33 @@
-<h2>Sign up</h2>
+<h4>ユーザー登録</h4>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
- <div class = " pl-xl-5	">
-   <div class = "container">
+<div class = " pl-xl-5	">
+  <div class = "container">
     <div class="form-horizontal">
-
-
-    <div class="form-group row">
-         <%= f.label :名前 , class: "col-sm-3 col-form-label"%>
-      <div class="col-sm-9">
-        <div class = "form-control-plaintext">
-          <%= f.text_field :name, autofocus: true, placeholder: "姓：長野", size: 15%>
-
-        </div>
-       </div>
-     </div>
-
-    <div class="form-group row">
-       <%= f.label :フリガナ , class: " col-sm-3 col-form-label" %>
-      <div class="col-sm-9">
-        <div class = "form-control-plaintext">
-          <%= f.text_field :furigana, autofocus: true, placeholder: "セイ：ナガノ", size: 15 %>
-
+      <div class="form-group row">
+        <%= f.label :名前 , class: "col-sm-3 col-form-label"%>
+        <div class="col-sm-9">
+          <div class = "form-control-plaintext">
+            <%= f.text_field :name, autofocus: true, placeholder: "深澤照", size: 15%>
+          </div>
         </div>
       </div>
-    </div>
 
-       <div class="form-group row">
+      <div class="form-group row">
+       <%= f.label :フリガナ , class: " col-sm-3 col-form-label" %>
+       <div class="col-sm-9">
+        <div class = "form-control-plaintext">
+          <%= f.text_field :furigana, autofocus: true, placeholder: "フカザワヒカル", size: 15 %>
+        </div>
+       </div>
+      </div>
+
+ <div class="form-group row">
        <%= f.label  :アカウント名 , class: " col-sm-3 col-form-label" %>
       <div class="col-sm-9">
         <div class = "form-control-plaintext">
-          <%= f.text_field :account, autofocus: true, placeholder: "セイ：ナガノ", size: 15 %>
-
+          <%= f.text_field :account, autofocus: true, placeholder: "snow9", size: 15 %>
         </div>
       </div>
     </div>
@@ -41,7 +36,7 @@
         <%= f.label :メールアドレス , class: " col-sm-3 col-form-label" %>
        <div class="col-sm-9">
         <div class = "form-control-plaintext">
-          <%= f.email_field :email, autofocus: true, placeholder: "cake_@gmail.com", size: 32 %>
+          <%= f.email_field :email, autofocus: true, placeholder: "test@test.com", size: 32 %>
         </div>
       </div>
     </div>
@@ -55,11 +50,22 @@
       </div>
     </div>
 
+  <div class="form-group row">
+    <%= f.label :都道府県, class: " col-sm-3 col-form-label"  %>
+    <div class="col-sm-9">
+        <div class = "form-control-plaintext">
+          <%= f.select :prefecture, User.prefectures.keys.to_a, include_blank: true %>
+        </div>
+    </div>
+  </div>
+
+
+
    <div class="form-group row">
        <%= f.label :住所 , class: " col-sm-3 col-form-label"  %>
       <div class="col-sm-9">
         <div class = "form-control-plaintext">
-         <%= f.text_field :prefecture, autofocus: true, placeholder: "大阪府大阪市北区０−０", size: 32 %>
+         <%= f.text_field :address, autofocus: true, placeholder: "渋谷区道玄坂0-0", size: 32 %>
         </div>
       </div>
    </div>
@@ -73,16 +79,15 @@
       </div>
    </div>
 
-  <div class="field">
-    <%= f.label :password %>
+   <div class="field">
+    <%= f.label :パスワード（６文字以上） %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :パスワード（確認用） %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
