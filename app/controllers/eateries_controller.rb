@@ -55,7 +55,7 @@ class EateriesController < ApplicationController
    private
 
   def eatery_params
-    params.require(:eatery).permit(:image, :user_id,:eatery_name,:address,:emo_id,:report,:emo)
+    params.require(:eatery).permit({images: []}, :user_id,:eatery_name,:address,:emo_id,:report,:emo)
   end
 
 end

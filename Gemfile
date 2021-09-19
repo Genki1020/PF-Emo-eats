@@ -80,3 +80,4 @@ gem "jquery-rails"
 gem 'ransack'
 gem 'active_hash'
 gem 'rmagick'
+gem 'carrierwave'
