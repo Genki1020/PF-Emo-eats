@@ -7,11 +7,10 @@
 <% end %>
 <%= form_with model: @eatery, local:true do |f| %>
   <h5>エモ</h5>
-  <%#= f.select :emo_names, Eatery.emo.emo_names.keys.to_a, include_blank: true %>
   <th><%= f.collection_select :emo_id, Emo.all, :id, :emo_name,{prompt: "選択してください"} %></th>を食べたい！
 
   <h5>画像</h5>
-  <%= f.attachment_field :image %>
+  <%= f.file_field :images, multiple: true %>
   <h5>ショップ名</h5>
   <%= f.text_field :eatery_name %>
   <h5>住所</h5>

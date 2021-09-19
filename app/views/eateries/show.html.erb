@@ -1,5 +1,13 @@
 <div class="post-body">
-  <%= attachment_image_tag @eatery, :image %>
+  <div class="article">
+  <% if @eatery.images.attached? %>
+    <div class"article_images">
+      <% @eatery.images.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
   <p>エモ:<%= @eatery.emo.emo_name %>を食べたい！</p>
   <p>ショップ名：<%= @eatery.eatery_name %></p>
   <p>説明：<%= @eatery.report %></p>

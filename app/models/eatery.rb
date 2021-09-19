@@ -1,7 +1,7 @@
 class Eatery < ApplicationRecord
   belongs_to :user
   belongs_to :emo
-  attachment :image
+  has_many_attached :images
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
