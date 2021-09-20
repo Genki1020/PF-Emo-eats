@@ -16,8 +16,22 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
-
+ @import "slick-theme";
+ @import "slick";
 .heaedr_logo {
  width: 150px;
  height: 90px;
+}
+
+.nest-hoge {
+    max-width: 500%;
+    max-height: 100%;
+    height: 55vh;
+    width: auto\9; /* ie8 */
+    margin: 0 auto;
+}
+
+.map{
+  height: 150px;
+  width:270px;
 }

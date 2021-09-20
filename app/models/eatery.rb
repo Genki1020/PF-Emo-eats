@@ -5,6 +5,9 @@ class Eatery < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+geocoded_by :address
+after_validation :geocode, if: Proc.new { |a| a.address_changed? }
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

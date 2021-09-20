@@ -1,13 +1,24 @@
 <div class="post-body">
-  <div class="article">
+
+
+ <div class="col-10">
+<div class="hoge">
   <% if @eatery.images.attached? %>
-    <div class"article_images">
-      <% @eatery.images.each do |image| %>
-        <%= image_tag image %>
+     <% @eatery.images.each do |image| %>
+
+      <div class="nest-hoge">
+        <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
+        <%= image_tag image, :size => '650x400' %>
+        <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
+      </div>
+
       <% end %>
-    </div>
   <% end %>
 </div>
+
+</div>
+
+
   <p>エモ:<%= @eatery.emo.emo_name %>を食べたい！</p>
   <p>ショップ名：<%= @eatery.eatery_name %></p>
   <p>説明：<%= @eatery.report %></p>
@@ -26,7 +37,17 @@
     </p>
   <% end %>
 
-  <p>住所：<%= @eatery.address %></p>
+  <p>住所</p>
+  <p><%= @eatery.address %></p>
+
+  <div id="map"></div>
+  <style>
+#map{
+  height: 150px;
+  width:270px;
+}
+</style>
+
   <p>ユーザーネーム：<%= @eatery.user.account %></p>
   <p>投稿日時：<%= @eatery.created_at.strftime('%Y/%m/%d') %></p>
   <div>
@@ -55,4 +76,34 @@
   <% end %>
 
 
+<script type="text/javascript">
+    function initMap() {
+        var test ={lat: <%= @eatery.latitude %>, lng: <%= @eatery.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @eatery.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA5TM75zeEbcLm1shfGqIXWOh14Gp2BVZ8&callback=initMap">
+</script>
 

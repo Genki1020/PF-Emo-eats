@@ -21,11 +21,11 @@ class EateriesController < ApplicationController
   def show
     @eatery = Eatery.find(params[:id])
     @post_comment = PostComment.new
+    gon.eatery = @eatery
   end
 
   def edit
       @eatery =  Eatery.find(params[:id])
-      @emo =  Emo.find(params[:id])
       if @eatery.user == current_user
           render "edit"
       else
