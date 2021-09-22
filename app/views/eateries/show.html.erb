@@ -2,6 +2,11 @@
 
 
  <div class="col-10">
+      <div class="col-20">
+          <p><%= @eatery.emo.emo_name %>を食べたい！</p>
+          <%= attachment_image_tag @eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
+          <%= @eatery.user.account %>
+      </div>
 <div class="hoge">
   <% if @eatery.images.attached? %>
      <% @eatery.images.each do |image| %>
@@ -18,8 +23,6 @@
 
 </div>
 
-
-  <p>エモ:<%= @eatery.emo.emo_name %>を食べたい！</p>
   <p>ショップ名：<%= @eatery.eatery_name %></p>
   <p>説明：<%= @eatery.report %></p>
 
@@ -48,12 +51,12 @@
 }
 </style>
 
-  <p>ユーザーネーム：<%= @eatery.user.account %></p>
+
   <p>投稿日時：<%= @eatery.created_at.strftime('%Y/%m/%d') %></p>
   <div>
 <p>コメント件数：<%= @eatery.post_comments.count %></p>
 <% @eatery.post_comments.each do |post_comment| %>
-  <p> <%= attachment_image_tag @eatery.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %></p>
+  <p> <%= attachment_image_tag @eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %></p>
   <%= post_comment.comment %>
   <%= post_comment.user.name %>
   <%= post_comment.created_at.strftime('%Y/%m/%d') %>
@@ -106,4 +109,3 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA5TM75zeEbcLm1shfGqIXWOh14Gp2BVZ8&callback=initMap">
 </script>
-
