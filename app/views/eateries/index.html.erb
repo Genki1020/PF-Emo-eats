@@ -42,3 +42,19 @@
 </div>
 </div>
 </div>
+
+ <% @all_ranks.each do |eatery| %>
+ <%= eatery.emo.emo_name %>を食べたい！
+ By <%= eatery.user.account %>
+   <%= link_to eatery_path(eatery.id) do %>
+    　　<% if eatery.images.attached? %>
+     　　　<div class"article_images">
+        　　<% if eatery.images.count > 0%>
+        　　<%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
+      　　　　<% end %>
+          </div>
+        <% end %>
+        <% end %>
+ <p>わかる！数：<%= eatery.favorites.count %></p>
+ <% end %>
+
