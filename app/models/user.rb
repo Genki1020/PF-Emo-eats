@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :eateries, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  
 
     enum prefecture: {"以下から選択":0,"北海道":1,"青森県":2,"岩手県":3,"宮城県":4,"秋田県":5,"山形県":6,
       "福島県":7,"茨城県":8,"栃木県":9,"群馬県":10,"埼玉県":11,"千葉県":12,"東京都":13,"神奈川県":14,
