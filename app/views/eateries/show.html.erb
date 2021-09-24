@@ -26,19 +26,9 @@
   <p>ショップ名：<%= @eatery.eatery_name %></p>
   <p>説明：<%= @eatery.report %></p>
 
-   <% if @eatery.favorited_by?(current_user) %>
-    <p>
-      <%= link_to eatery_favorites_path(@eatery), method: :delete do %>
-        ♥<%= @eatery.favorites.count %> わかる！
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to eatery_favorites_path(@eatery), method: :post do %>
-        ♡<%= @eatery.favorites.count %> わかる！
-      <% end %>
-    </p>
-  <% end %>
+  <div id="favorites_buttons_<%= @eatery.id %>">
+  <%= render 'favorites/favorite', eatery: @eatery %>
+</div>
 
   <p>住所</p>
   <p><%= @eatery.address %></p>
