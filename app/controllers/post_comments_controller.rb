@@ -4,7 +4,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.eatery_id = eatery.id
     comment.save
-    #eatery.create_notification_post_comment!(current_user, comment.id)
+    eatery.create_notification_post_comment!(current_user, comment.id)
     redirect_to eatery_path(eatery)
   end
 

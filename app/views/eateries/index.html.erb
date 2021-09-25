@@ -58,3 +58,31 @@
  <p>わかる！数：<%= eatery.favorites.count %></p>
  <% end %>
 
+
+<div class="name-search">
+                    #deviseのヘルパーメソッドです、省いても問題ありません。
+    <h5>内容検索</h5>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field 'search[value]', size: "26x4" %><br>
+      <span class="search-button col-xs-12 text-right">
+        <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+        <%= f.submit :"検索" %>
+      </span>
+    <% end %>
+</div>
+<table class="table table-bordered genre-table">
+    <thead>
+      <tr>
+        <th>エモ検索</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @emos.each do |emo| %>
+      <tr>
+        <td>
+          <%= link_to emo.emo_name, search_path('search[value]': genre.id, 'search[how]': "match") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
