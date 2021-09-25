@@ -1,2 +1,15 @@
-<h1>Search#search</h1>
-<p>Find me in app/views/search/search.html.erb</p>
+<% if @datas.empty? %>
+  <h2>該当する商品はありません</h2>
+<% end %>
+  <% @datas.each do |data| %>
+    <div>
+      <p><%=  data.emo.emo_name %>が食べたい！</p><br>
+      <p><%=  data.eatery_name %></p><br>
+      <p>By<%=  data.user.account %></p><br>
+      <%= link_to eatery_path(data.id) do %>
+      　<%= image_tag data.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
+      <% end %>
+      <p><%#= data.inspect %></p>
+
+    </div>
+  <% end %>

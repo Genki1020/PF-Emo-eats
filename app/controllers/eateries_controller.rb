@@ -17,6 +17,7 @@ class EateriesController < ApplicationController
   def index
     @eateries = Eatery.page(params[:page]).reverse_order
     @all_ranks = Eatery.find(Favorite.group(:eatery_id).order('count(eatery_id) desc').limit(3).pluck(:eatery_id))
+    @emos = Emo.all
   end
 
   def show
