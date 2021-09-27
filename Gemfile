@@ -79,7 +79,7 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem "jquery-rails"
 gem 'ransack'
 gem 'active_hash'
-gem 'rmagick'
+#gem 'rmagick'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'gon'
