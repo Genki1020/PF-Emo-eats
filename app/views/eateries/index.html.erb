@@ -1,90 +1,92 @@
- <div class="row">
-    <div class="col-xs-5 bg-primary">
-<div class="card" style="width: 18rem;">
-   <% @eateries.each do |eatery| %>
-
-    <div class="card w-20 mx-auto mt-4 shadow-lg">
-      <div class="col-20">
-          <p><%= eatery.emo.emo_name %>を食べたい！</p>
-          <%= link_to user_path(eatery.user) do %>
-          <%= attachment_image_tag eatery.user, :profile_image, :fill, size: "60x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle";%>
-          <%= eatery.user.account %>
-          <% end %>
-      </div>
-
-<div class="mx-auto">
-    　<div class="article">
-    　  <%= link_to eatery_path(eatery.id) do %>
-    　　<% if eatery.images.attached? %>
-     　　　<div class"article_images">
-        　　<% if eatery.images.count > 0%>
-        　　<%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
-      　　　　<% end %>
-          </div>
-        <% end %>
-        <% end %>
-      </div>
-</div>
-
-        <div class="card-body">
-          <div class="row">
-            <div class="col-10">
-             <p class="card-title">
-               <%= link_to(eatery_path(eatery.id), class:"text-dark") do %>
-                  <strong><i class="far fa-flag"></i><span> <%= eatery.eatery_name %></span></strong>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+     <div class="favorites-ranks">
+      <h5 class="fas fa-crown">わかる数ランキング！</h5><br>
+       <% @all_ranks.each do |eatery| %>
+         <div class="card my-1 pl-2">
+             <i class="fas fa-thumbs-up">わかる！(<%= eatery.favorites.count %>件)</i><br>
+             <td><%= eatery.emo.emo_name %>を食べたい！</td><br>
+             <td> By <%= eatery.user.account %></td>
+             <%= link_to eatery_path(eatery.id) do %>
+                <% if eatery.images.attached? %>
+                     <div class"article_images">
+                         <% if eatery.images.count > 0%>
+                         <%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
+                         <% end %>
+                     </div>
                 <% end %>
-              </p>
-             <p>わかる！数：<%= eatery.favorites.count %></p>
-             <p><%= link_to "#{eatery.post_comments.count} コメント", eatery_path(eatery.id) %></p>
-            </div>
-          </div>
+             <% end %>
         </div>
-  </div>
-<% end %>
-</div>
-</div>
-</div>
+      <% end %>
+    </div>
 
- <% @all_ranks.each do |eatery| %>
- <%= eatery.emo.emo_name %>を食べたい！
- By <%= eatery.user.account %>
-   <%= link_to eatery_path(eatery.id) do %>
-    　　<% if eatery.images.attached? %>
-     　　　<div class"article_images">
-        　　<% if eatery.images.count > 0%>
-        　　<%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
-      　　　　<% end %>
-          </div>
-        <% end %>
-        <% end %>
- <p>わかる！数：<%= eatery.favorites.count %></p>
- <% end %>
-
-
-<div class="name-search">
-    <h5>内容検索</h5>
-    <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+    <div class="name-search">
+     <h5>店舗名検索</h5>
+      <%= form_with url: search_search_path, method: :get, local: true do |f| %>
       <%= f.text_field 'search[value]', size: "26x4" %><br>
       <span class="search-button col-xs-12 text-right">
         <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
         <%= f.submit :"検索" %>
       </span>
-    <% end %>
-</div>
+      <% end %>
+    </div>
 
 <table class="table table-bordered genre-table">
     <thead>
       <tr>
-        <th>店舗検索</th>
+        <th>検索</th>
       </tr>
     </thead>
     <tbody>
-    　<% @emos.each do |emo| %>
-      　<tr>
-        　<td>
-          　<%= link_to emo.emo_name, search_search_path('search[value]': emo.id, 'search[how]': "match") %>
-        　</td>
-      　</tr>
-    　<% end %>
+        <% @emos.each do |emo| %>
+        <tr>
+            <td>
+                <%= link_to emo.emo_name, search_search_path('search[value]': emo.id, 'search[how]': "match") %>
+            </td>
+        </tr>
+        <% end %>
     </tbody>
 </table>
+</div>
+
+
+ <div class="col-lg-3 offset-md-1">
+   <% @eateries.each do |eatery| %>
+    <div class="card mx-auto mt-3 shadow-lg">
+      <div class="col-20">
+          <button type="button" class="btn btn-danger"><%= eatery.emo.emo_name %></button>を食べたい!<br>
+          <%= link_to user_path(eatery.user) do %>
+          <%= attachment_image_tag eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
+          <%= eatery.user.account %>
+          <% end %>
+      </div>
+
+    <div class="mx-auto">
+         <%= link_to eatery_path(eatery.id) do %>
+          <% if eatery.images.attached? %>
+              <div class"article_images">
+                 <% if eatery.images.count > 0%>
+                 <%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
+                 <% end %>
+              </div>
+           <% end %>
+          <% end %>
+    </div>
+
+    <div class="card-body">
+      <p class="card-title">
+          <%= link_to(eatery_path(eatery.id), class:"text-dark") do %>
+           <strong><i class="fas fa-store"></i><span><%= eatery.eatery_name %></span></strong>
+          <% end %>
+      </p>
+      <div class="text-right">
+          <i class="fas fa-thumbs-up">わかる！(<%= eatery.favorites.count %>件)</i><br>
+          <p><%= link_to "#{eatery.post_comments.count} コメント", eatery_path(eatery.id) %></p>
+      </div>
+      </div>
+  </div>
+<% end %>
+
+</div>
+</div>
