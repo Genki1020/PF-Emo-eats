@@ -1,14 +1,19 @@
 class EateriesController < ApplicationController
   def new
      @eatery = Eatery.new
+     @emo = Emo.new
   end
 
   def create
     @eatery = Eatery.new(eatery_params)
+    @emo = Emo.new(emo_params)
     @eatery.user_id = current_user.id
     if @eatery.save
       flash[:notice] = "投稿完了"
       redirect_to eateries_path
+    elsif
+      @emo.save
+      redirect_to request.referer
     else
       render :new
     end
@@ -59,6 +64,8 @@ class EateriesController < ApplicationController
   def eatery_params
     params.require(:eatery).permit({images: []}, :user_id,:eatery_name,:address,:emo_id,:report,:emo)
   end
-
+ def emo_params
+    params.require(:emo).permit(:emo_name)
+  end
 end
 
