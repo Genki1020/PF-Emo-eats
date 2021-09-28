@@ -43,7 +43,13 @@
         <%= link_to "MyPage", user_path(current_user.id) , class: 'fas fa-user nav-link text-light ' %>
       </li>
       <li class="nav-item">
+        <%= link_to "Notification", notifications_path , class: 'fas fa-bell nav-link text-light' %>
+      </li>
+      <li class="nav-item">
        <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %>
+      </li>
+      <li class="nav-item">
+       <%= link_to "お問い合わせ",new_contact_path, class: 'fas fa-question-circle nav-link text-light' %>
       </li>
 
     <% else %>
@@ -58,6 +64,9 @@
       </li>
       <li class="nav-item">
         <%= link_to "login", new_user_session_path , class:'fas fa-sign-in-alt nav-link text-light'%>
+      </li>
+      <li class="nav-item">
+       <%= link_to "お問い合わせ",new_contact_path, class: 'fas fa-question-circlenav-link text-light' %>
       </li>
     <% end %>
 

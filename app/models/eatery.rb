@@ -7,7 +7,10 @@ class Eatery < ApplicationRecord
   has_many :notifications, dependent: :destroy
 geocoded_by :address
 after_validation :geocode, if: Proc.new { |a| a.address_changed? }
-
+  validates :eatery_name, presence: true
+  validates :report, presence: true
+  validates :emo_id, presence: true
+  validates :address, presence: true
 
  def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
@@ -55,4 +58,5 @@ end
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
 end

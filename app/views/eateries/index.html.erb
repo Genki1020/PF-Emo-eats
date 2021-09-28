@@ -6,8 +6,10 @@
     <div class="card w-20 mx-auto mt-4 shadow-lg">
       <div class="col-20">
           <p><%= eatery.emo.emo_name %>を食べたい！</p>
-          <%= attachment_image_tag eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
+          <%= link_to user_path(eatery.user) do %>
+          <%= attachment_image_tag eatery.user, :profile_image, :fill, size: "60x50", fallback: "no_image.jpg",class:"mt-3 rounded-circle";%>
           <%= eatery.user.account %>
+          <% end %>
       </div>
 
 <div class="mx-auto">
@@ -69,19 +71,20 @@
       </span>
     <% end %>
 </div>
+
 <table class="table table-bordered genre-table">
     <thead>
       <tr>
-        <th>エモ検索</th>
+        <th>店舗検索</th>
       </tr>
     </thead>
     <tbody>
-    <% @emos.each do |emo| %>
-      <tr>
-        <td>
-          <%= link_to emo.emo_name, search_search_path('search[value]': emo.id, 'search[how]': "match") %>
-        </td>
-      </tr>
-    <% end %>
+    　<% @emos.each do |emo| %>
+      　<tr>
+        　<td>
+          　<%= link_to emo.emo_name, search_search_path('search[value]': emo.id, 'search[how]': "match") %>
+        　</td>
+      　</tr>
+    　<% end %>
     </tbody>
 </table>
