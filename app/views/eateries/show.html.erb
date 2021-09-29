@@ -1,7 +1,7 @@
-<div class="post-body">
 
 
- <div class="col-10">
+ <div class="mx-auto">
+ <div class="col-15">
       <div class="col-20">
           <button type="button" class="btn btn-light"><button type="button" class="btn btn-danger"><%= @eatery.emo.emo_name %></button>を食べたい!</button>
           <p><%= attachment_image_tag @eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
@@ -21,9 +21,9 @@
 
 </div>
 
-  <h5 class="fas fa-store">ショップ名：<%= @eatery.eatery_name %></h5><br>
+  <h6 class="fas fa-store">店舗名：<%= @eatery.eatery_name %></h6><br>
   <li class="fas fa-utensils">説明</li>
-  <li><%= @eatery.report %></li>
+  <p class="report"><%= @eatery.report %></p>
   <div id="favorites_buttons_<%= @eatery.id %>">
   <%= render 'favorites/favorite', eatery: @eatery %>
 </div>
@@ -65,7 +65,7 @@
     <td><%= link_to "編集", edit_eatery_path(@eatery),class:"btn btn-sm btn-success edit_book_7295" %></td>
 <td><%= link_to "削除", eatery_path(@eatery), method: :delete ,class:"btn btn-sm btn-danger destroy_book_7295" ,data: { confirm: '本当に消しますか？' }%></td>
   <% end %>
-
+ </div>
 
 <script type="text/javascript">
     function initMap() {

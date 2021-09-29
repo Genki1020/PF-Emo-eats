@@ -8,19 +8,19 @@ class SearchController < ApplicationController
 
   def match(value)
     #.orを使用することで、valueに一致するカラムのデータをnameカラムとgenre_idカラムから探してきます。
-    Eatery.where(eatery_name: value).or(Eatery.where(emo_id: value))
+    Eatery.where(address: value).or(Eatery.where(emo_id: value))
   end
 
   def forward(value)                              #forward以降は商品名検索の定義しかしてません。
-    Eatery.where("eatery_name LIKE ?", "#{value}%")
+    Eatery.where("address LIKE ?", "#{value}%")
   end
 
   def backward(value)
-    Eatery.where("eatery_name LIKE ?", "%#{value}")
+    Eatery.where("address LIKE ?", "%#{value}")
   end
 
   def partical(value)
-    Eatery.where("eatery_name LIKE ?", "%#{value}%")
+    Eatery.where("address LIKE ?", "%#{value}%")
   end
 
 

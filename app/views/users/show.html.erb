@@ -22,25 +22,39 @@
         </table>
     </div>
 
-  <div class="container col-md-8 py-4">
-   <% @eateries.each do |eatery| %>
-    <div class="card-deck">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><button type="button" class="btn btn-light"><button type="button" class="btn btn-danger"><%= eatery.emo.emo_name %></button>を食べたい!</button></h5>
-            </div>
+  <div class="col-md-8">
+   <div class="row">
+       <% @eateries.each do |eatery| %>
+        <div class="card mx-auto mt-3 shadow-lg px-3">
+          <div class="card-body">
+          <div class="col-20">
+              <button type="button" class="btn btn-danger px-1"><%= eatery.emo.emo_name %></button><br>
+              <div class="text-right">を食べたい!</div><br>
+          </div>
+          </div>
+        <div class="mx-auto">
              <%= link_to eatery_path(eatery.id) do %>
               <% if eatery.images.attached? %>
-               <div class"article_images">
-                   <% if eatery.images.count > 0%>
-                   <%=  image_tag eatery.images.first.variant(resize: "400x400").processed, class: "article-list-img" %>
-                   <% end %>
-                </div>
+                  <div class"article_images">
+                     <% if eatery.images.count > 0%>
+                     <%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img border" %>
+                     <% end %>
+                  </div>
                <% end %>
               <% end %>
-           </div>
         </div>
-  </div>
-  </div>
-<% end %>
-</div>
+
+        <div class="card-body">
+          <p class="card-title">
+              <%= link_to(eatery_path(eatery.id), class:"text-dark") do %>
+               <strong><i class="fas fa-store"></i><span><%= eatery.eatery_name %></span></strong>
+              <% end %>
+          </p>
+          <div class="text-right">
+              <i class="fas fa-thumbs-up">わかる！(<%= eatery.favorites.count %>件)</i><br>
+              <p><%= link_to "#{eatery.post_comments.count} コメント", eatery_path(eatery.id) %></p>
+          </div>
+          </div>
+      </div>
+       <% end %>
+   </div>
