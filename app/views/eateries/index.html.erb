@@ -4,19 +4,21 @@
      <div class="favorites-ranks">
       <h5 class="fas fa-crown">わかるランキング！</h5><br>
        <% @all_ranks.each do |eatery| %>
-         <div class="card my-1 pl-2">
+         <div class="card my-3 px-2 py-2 ">
+             <div class="mx-auto">
              <i class="fas fa-thumbs-up mt-2">わかる！(<%= eatery.favorites.count %>件)</i><br>
-             <button type="button" class="btn btn-danger py-2"><%= eatery.emo.emo_name %></button></td><br>
+             <button type="button" class="btn btn-danger"><%= eatery.emo.emo_name %></button></td><br>
              <td> By <%= eatery.user.account %></td>
              <%= link_to eatery_path(eatery.id) do %>
                 <% if eatery.images.attached? %>
-                     <div class"article_images">
+                     <div class"article_images pl-3">
                          <% if eatery.images.count > 0%>
                          <%=  image_tag eatery.images.first.variant(resize: "150x150").processed, class: "article-list-img border" %>
                          <% end %>
                      </div>
                 <% end %>
              <% end %>
+            </div>
         </div>
       <% end %>
     </div>
