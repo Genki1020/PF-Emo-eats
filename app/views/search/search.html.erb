@@ -1,15 +1,17 @@
 <% if @datas.empty? %>
-  <h2>該当する商品はありません</h2>
+  <h2>該当する店舗はありません</h2>
 <% end %>
   <% @datas.each do |data| %>
-    <div>
-      <p><%=  data.emo.emo_name %>が食べたい！</p><br>
-      <p><%=  data.eatery_name %></p><br>
-      <p>By<%=  data.user.account %></p><br>
+  <div class="card">
+    <div class="my-2 pl-3">
       <%= link_to eatery_path(data.id) do %>
-      　<%= image_tag data.images.first.variant(resize: "200x200").processed, class: "article-list-img" %>
+      <br><i class="fas fa-heart"><%= data.emo.emo_name %>を食べたい!</i><br>
+      <i class="fas fa-store"><%=  data.eatery_name %></i><br>
+      <p>By<%=  data.user.account %></p>
+      <p><%=  data.address %></p><br>
+      <%= image_tag data.images.first.variant(resize: "200x180").processed, class: "article-list-img border" %>
       <% end %>
       <p><%#= data.inspect %></p>
-
+    </div>
     </div>
   <% end %>
