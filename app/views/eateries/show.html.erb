@@ -1,7 +1,7 @@
 
 
  <div class="mx-auto">
- <div class="col-15">
+   <div class="col-15">
       <div class="col-20">
           <button type="button" class="btn btn-light"><button type="button" class="btn btn-danger"><%= @eatery.emo.emo_name %></button>を食べたい!</button>
            <%= link_to user_path(@eatery.user) do %>
@@ -9,31 +9,28 @@
           <%= @eatery.user.account %></p>
           <% end %>
       </div>
-<div class="hoge">
-  <% if @eatery.images.attached? %>
-     <% @eatery.images.each do |image| %>
-      <div class="nest-hoge">
-        <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
-        <%= image_tag image, :size => '650x400' %>
-        <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
+      <div class="hoge">
+        <% if @eatery.images.attached? %>
+           <% @eatery.images.each do |image| %>
+            <div class="nest-hoge">
+              <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
+              <%= image_tag image, :size => '650x400' %>
+              <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
+            </div>
+            <% end %>
+        <% end %>
       </div>
-      <% end %>
-  <% end %>
-</div>
-
-</div>
-
-  <h6 class="fas fa-store">店舗名：<%= @eatery.eatery_name %></h6><br>
-  <li class="fas fa-utensils">説明</li>
-  <p class="report"><%= @eatery.report %></p>
-  <div id="favorites_buttons_<%= @eatery.id %>">
-  <%= render 'favorites/favorite', eatery: @eatery %>
-</div>
-
+    </div>
+      <h6 class="fas fa-store">店舗名：<%= @eatery.eatery_name %></h6><br>
+      <li class="fas fa-utensils">説明</li>
+      <p class="report"><%= @eatery.report %></p>
+      <div id="favorites_buttons_<%= @eatery.id %>">
+      <%= render 'favorites/favorite', eatery: @eatery %>
+    </div>
   <p>住所</p>
   <p><%= @eatery.address %></p>
-
   <div id="map"></div>
+
   <style>
 #map{
   height: 150px;
