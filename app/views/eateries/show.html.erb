@@ -24,9 +24,13 @@
       <h6 class="fas fa-store">店舗名：<%= @eatery.eatery_name %></h6><br>
       <li class="fas fa-utensils">説明</li>
       <p class="report"><%= @eatery.report %></p>
-      <div id="favorites_buttons_<%= @eatery.id %>">
-      <%= render 'favorites/favorite', eatery: @eatery %>
-    </div>
+      <% if user_signed_in? %>
+        <div id="favorites_buttons_<%= @eatery.id %>">
+          <%= render 'favorites/favorite', eatery: @eatery %>
+        </div>
+      <% else %>
+         <i class="fas fa-thumbs-up">わかる！(<%= @eatery.favorites.count %>件)</i><br>
+      <% end %>
   <p>住所</p>
   <p><%= @eatery.address %></p>
   <div id="map"></div>
