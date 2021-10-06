@@ -24,13 +24,13 @@ class EmosController < ApplicationController
     redirect_to admin_emos_path
   end
 
-def destroy
+  def destroy
     @emo = Emo.find(params[:id])
     @emo.destroy
     redirect_to emos_path
- end
+  end
 
-  private
+private
 
   def emo_params
     params.require(:emo).permit(:emo_name)
