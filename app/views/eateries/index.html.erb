@@ -6,18 +6,18 @@
            <% @all_ranks.each do |eatery| %>
              <div class="card my-3 px-2 py-2 ">
                  <div class="mx-auto">
-                 <i class="fas fa-thumbs-up mt-2">わかる！(<%= eatery.favorites.count %>件)</i><br>
-                 <button type="button" class="btn btn-danger"><%= eatery.emo.emo_name %></button></td><br>
-                 <td> By <%= eatery.user.account %></td>
-                 <%= link_to eatery_path(eatery.id) do %>
-                    <% if eatery.images.attached? %>
-                         <div class"article_images pl-3">
-                             <% if eatery.images.count > 0%>
-                             <%=  image_tag eatery.images.first.variant(resize: "150x150").processed, class: "article-list-img border" %>
-                             <% end %>
-                         </div>
-                    <% end %>
-                 <% end %>
+                   <i class="fas fa-thumbs-up mt-2">わかる！(<%= eatery.favorites.count %>件)</i><br>
+                   <button type="button" class="btn btn-danger"><%= eatery.emo.emo_name %></button></td><br>
+                     <td> By <%= eatery.user.account %></td>
+                     <%= link_to eatery_path(eatery.id) do %>
+                        <% if eatery.images.attached? %>
+                             <div class"article_images pl-3">
+                                 <% if eatery.images.count > 0%>
+                                 <%=  image_tag eatery.images.first.variant(resize: "150x150").processed, class: "article-list-img border" %>
+                                 <% end %>
+                             </div>
+                        <% end %>
+                     <% end %>
                 </div>
             </div>
           <% end %>
@@ -25,11 +25,11 @@
         <div class="name-search">
          <h5>エリア検索</h5>
           <%= form_with url: search_search_path, method: :get, local: true do |f| %>
-          <%= f.text_field 'search[value]', size: "26x4" %><br>
-          <span class="search-button col-xs-12 text-right">
-            <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
-            <%= f.submit :"検索" %>
-          </span>
+              <%= f.text_field 'search[value]', size: "26x4" %><br>
+            <span class="search-button col-xs-12 text-right">
+              <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+              <%= f.submit :"検索" %>
+            </span>
           <% end %>
         </div>
         <table class="table table-bordered genre-table">
