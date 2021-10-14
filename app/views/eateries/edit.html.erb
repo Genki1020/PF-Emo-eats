@@ -4,16 +4,16 @@
       <h1>エモ投稿編集</h1>
           <%= form_with model: @eatery, local:true do |f| %>
             <p>エモ<br>
-            <%= f.collection_select :emo_id, Emo.all, :id, :emo_name,{prompt: "選択してください"} %>を食べたい！</p>
+             <%= f.collection_select :emo_id, Emo.all, :id, :emo_name,{prompt: "選択してください"} %>を食べたい！</p>
             <p>店舗名<br>
-              <%= f.text_field :eatery_name %></p>
+             <%= f.text_field :eatery_name %></p>
             <p>レポート<br>
              <%= f.text_area :report, size: '10x10', class: 'form-control' %></p>
-            <p>住所</p>
-            <%= f.text_area :adress%>
+            <p>住所<br>
+             <%= f.text_area :adress%></p>
             <%= f.submit '更新する' ,class:"btn btn-success"%>
           <% end %>
-           <p><%= link_to "Back", eatery_path(@eatery) %></p>
+            <p><%= link_to "Back", eatery_path(@eatery) %></p>
     </div>
   </div>
 </div>
