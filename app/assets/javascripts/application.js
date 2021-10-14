@@ -11,18 +11,21 @@
 // about supported directives.
 //
 //= require jquery3
-//= require jquery_ujs
+//= require rails-ujs
 //= require popper
 //= require bootstrap-sprockets
 
-//= require rails-ujs
 //= require activestorage
 
 //= require_tree .
 
+
 $(function() {
-    $('.hoge').slick({
-        dots: true,
-        adaptiveHeight:true
-    });
+  $('.hoge').slick({
+      dots: true,
+  });
+
+  $('.slick-dots li').on('mouseover', function() {
+    $('.hoge').slick('goTo', $(this).index());
+  });
 });
