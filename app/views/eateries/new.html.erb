@@ -7,11 +7,11 @@
 <% end %>
 
 <h5>AddEmo</h5>
+<div class="form-group">
   <%= form_with model: @emo, local:true do |f| %>
-  <div class="form-group">
-  <th>※下記のセレクトに自分に合うエモがない場合は以下からエモを登録してください</th><br>
-  <th><%= f.text_field :emo_name, placeholder: "あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツ", size: 75 %>を食べたい！</th>
-  <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
+    <th>※下記のセレクトに自分に合うエモがない場合は以下からエモを登録してください</th><br>
+    <th><%= f.text_field :emo_name, placeholder: "あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツ", size: 75 %>を食べたい！</th>
+    <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
   <% end %>
 </div>
 <th></th>
