@@ -4,19 +4,19 @@
    <div class="col-10">
       <div class="col-10">
          <button type="button" class="btn btn-danger"><%= @eatery.emo.emo_name %></button>を食べたい!
-           <%= link_to user_path(@eatery.user) do %>
-          <p><%= attachment_image_tag @eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
-          <%= @eatery.user.account %></p>
+          <%= link_to user_path(@eatery.user) do %>
+            <p><%= attachment_image_tag @eatery.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
+            <%= @eatery.user.account %></p>
           <% end %>
       </div>
       <div class="hoge">
         <% if @eatery.images.attached? %>
            <% @eatery.images.each do |image| %>
-            <div class="nest-hoge">
-              <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
-              <%= image_tag image, :size => '650x400' %>
-              <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
-            </div>
+              <div class="nest-hoge">
+                <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
+                  <%= image_tag image, :size => '650x400' %>
+                <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button>
+              </div>
             <% end %>
         <% end %>
       </div>
@@ -61,14 +61,14 @@
 <% end %>
 </div>
 <div>
-<%= form_with(model:[@eatery, @post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
+  <%= form_with(model:[@eatery, @post_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
 </div>
   <% if @eatery.user == current_user %>
     <td><%= link_to "編集", edit_eatery_path(@eatery),class:"btn btn-sm btn-success edit_book_7295" %></td>
-<td><%= link_to "削除", eatery_path(@eatery), method: :delete ,class:"btn btn-sm btn-danger destroy_book_7295" ,data: { confirm: '本当に消しますか？' }%></td>
+    <td><%= link_to "削除", eatery_path(@eatery), method: :delete ,class:"btn btn-sm btn-danger destroy_book_7295" ,data: { confirm: '本当に消しますか？' }%></td>
   <% end %>
  </div>
 
@@ -81,18 +81,15 @@
         });
         var transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
-
         var contentString = '住所：<%= @eatery.address %>';
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
-
         var marker = new google.maps.Marker({
             position:test,
             map: map,
             title: contentString
         });
-
         marker.addListener('click', function() {
             infowindow.open(map, marker);
         });
