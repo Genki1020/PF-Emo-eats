@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   attachment :profile_image
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 一覧画面で使う
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :eateries, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -16,5 +21,38 @@ class User < ApplicationRecord
       "静岡県":22, "愛知県":23,"三重県":24,"滋賀県":25, "京都府":26, "大阪府":27,"兵庫県":28, "奈良県":29,"和歌山県":30,
       "鳥取県":31,"島根県":32,"岡山県":33,"広島県":34, "山口県":35, "徳島県":36,"香川県":37, "愛媛県":38, "高知県":39,
       "福岡県":40,"佐賀県":41,"長崎県":42,"熊本県":43, "大分県":44, "宮崎県":45,"鹿児島県":46,"沖縄県":47}
+
+# フォローしたときの処理
+def follow(user_id)
+  relationships.create(followed_id: user_id)
+end
+# フォローを外すときの処理
+def unfollow(user_id)
+  relationships.find_by(followed_id: user_id).destroy
+end
+# フォローしているか判定
+def following?(user)
+  followings.include?(user)
+end
+
+# def create_notification_follow!(current_user)
+#     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+#     binding.pry
+#     if temp.blank?
+#       notification = current_user.active_notifications.new(
+#         visited_id: id,
+#         action: 'follow'
+#       )
+#       notification.save if notification.valid?
+#     end
+#   end
+  # def create_notification_follow(current_user)
+  #   binding.pry
+  #   notification = current_user.active_notifications.new(
+  #     visited_id: id, 
+  #     action: 'follow'
+  #   )
+  #   notification.save if notification.valid?
+  # end
 
 end

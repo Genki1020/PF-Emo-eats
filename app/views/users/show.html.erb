@@ -6,13 +6,30 @@
         <table class="table table-bordered">
             <h4 class ="text-center m-3">User Info</h4>
             <tbody>
-                <div class="center-block"><%= attachment_image_tag @user, :profile_image, size: "100x100", format:'jpg', fallback:"no_image.jpg",class:"rounded-circle"; %></div>
+                <div class="center-block"><%= attachment_image_tag @user, :profile_image, size: "100x100", format:'jpg', fallback:"no_image.jpg",class:"rounded-circle border"; %></div>
                 <tr>
                     <td>@<%= @user.account%></td>
                 </tr>
                 <tr>
                     <td><%= @user.prefecture %></td>
                 </tr>
+                <tr>
+                 <th><%= link_to @user.followings.count,user_followings_path(@user.id) %>フォロー</th>
+                </tr>
+                <tr>
+                  <th><%= link_to @user.followers.count,user_followers_path(@user.id)%>フォロワー</th>
+                </tr>
+                <tr>
+                 <% if @user == current_user %>
+                 <% else %>
+                <% if current_user.following?(@user) %>
+                  <td><%= link_to "解除", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger"%></td>
+                <% else %>
+                  <td><%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "btn btn-info"  %></td>
+                <% end %>
+                <% end %>
+                <tr/>
+
                 <tr>
                     <% if @user.id == current_user.id %>
                     <td><%= link_to "編集する", edit_user_path(@user), class: "btn btn-success" %></td>

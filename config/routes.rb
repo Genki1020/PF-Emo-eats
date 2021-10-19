@@ -5,11 +5,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  root to: 'eateries#index'
  get 'about' => 'homes#about'
-resources :users
+
+resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
+
 resources :emos
 resources :eateries do
-resource :favorites, only: [:create, :destroy]
-resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
 end
 resources :contacts, only: [:new, :create]
 post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
