@@ -22,9 +22,17 @@ class User < ApplicationRecord
       "鳥取県":31,"島根県":32,"岡山県":33,"広島県":34, "山口県":35, "徳島県":36,"香川県":37, "愛媛県":38, "高知県":39,
       "福岡県":40,"佐賀県":41,"長崎県":42,"熊本県":43, "大分県":44, "宮崎県":45,"鹿児島県":46,"沖縄県":47}
 
+  def create_notification_follow(current_user)
+    notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: 'follow'
+    )
+    notification.save if notification.valid?
+  end
+
 # フォローしたときの処理
-def follow(user_id)
-  relationships.create(followed_id: user_id)
+def follow(user)
+  relationships.create(followed_id: user.id)
 end
 # フォローを外すときの処理
 def unfollow(user_id)
@@ -34,25 +42,5 @@ end
 def following?(user)
   followings.include?(user)
 end
-
-# def create_notification_follow!(current_user)
-#     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-#     binding.pry
-#     if temp.blank?
-#       notification = current_user.active_notifications.new(
-#         visited_id: id,
-#         action: 'follow'
-#       )
-#       notification.save if notification.valid?
-#     end
-#   end
-  # def create_notification_follow(current_user)
-  #   binding.pry
-  #   notification = current_user.active_notifications.new(
-  #     visited_id: id, 
-  #     action: 'follow'
-  #   )
-  #   notification.save if notification.valid?
-  # end
 
 end
