@@ -5,13 +5,12 @@ module NotificationsHelper
       your_eatery = link_to 'あなたの投稿', eatery_path(notification), style:"font-weight: bold;"
       @visitor_post_comment = notification.post_comment_id
       #notification.actionがfollowかlikeかcommentか
-
       # binding.pry
       case notification.action
         when "follow" then
-          tag.a(notification.visitor.account, href:user_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
+          tag.a(notification.visitor.account, href:user_path(@visitor.id), style:"font-weight: bold;")+"があなたをフォローしました"
         when "favorite" then
-          tag.a(notification.visitor.account, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:eatery_path(notification.eatery_id), style:"font-weight: bold;")+"にいいねしました"
+          tag.a(notification.visitor.account, href:user_path(@visitor.id), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:eatery_path(notification.eatery_id), style:"font-weight: bold;")+"にいいねしました"
         when "post_comment" then
             @post_comment = PostComment.find_by(id: @visitor_post_comment)&.comment
             tag.a(@visitor.account, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:eatery_path(notification.eatery_id), style:"font-weight: bold;")+"にコメントしました"
