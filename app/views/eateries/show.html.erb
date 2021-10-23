@@ -67,8 +67,8 @@
   <% end %>
 </div>
   <% if @eatery.user == current_user %>
-    <td><%= link_to "編集", edit_eatery_path(@eatery),class:"btn btn-sm btn-success edit_book_7295" %></td>
-    <td><%= link_to "削除", eatery_path(@eatery), method: :delete ,class:"btn btn-sm btn-danger destroy_book_7295" ,data: { confirm: '本当に消しますか？' }%></td>
+  　<p>こちらの投稿記事への<p/>
+    <p><%= link_to "編集", edit_eatery_path(@eatery),class:"btn btn-sm btn-success edit_book_7295" %><%= link_to "削除", eatery_path(@eatery), method: :delete ,class:"btn btn-sm btn-danger destroy_book_7295" ,data: { confirm: '本当に消しますか？' }%></p>
   <% end %>
  </div>
 
