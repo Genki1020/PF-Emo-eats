@@ -33,39 +33,40 @@
       <% end %>
   <p>住所</p>
   <p><%= @eatery.address %></p>
-  <div id="map"></div>
-
-  <style>
-#map{
-  height:400px;
-  width:1000px;
-}
-</style>
-
-
-  <p>投稿日時：<%= @eatery.created_at.strftime('%Y/%m/%d') %></p>
-  <div>
-<p>コメント件数：<%= @eatery.post_comments.count %></p>
-<% @eatery.post_comments.each do |post_comment| %>
-  <%= link_to user_path(post_comment.user) do %>
-  <p> <%= attachment_image_tag post_comment.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
-  <%= post_comment.user.account %></p>
-  <% end %>
-  <%= post_comment.comment %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-  <% if post_comment.user == current_user %>
-  <div>
-    <%= link_to "削除", eatery_post_comment_path(post_comment.eatery, post_comment), method: :delete %>
+  <div id="map">
+    <style>
+      #map{
+        height:400px;
+        width:1000px;
+      }
+    </style>
   </div>
-  <% end %>
-<% end %>
+ <p>投稿日時：<%= @eatery.created_at.strftime('%Y/%m/%d') %></p>
+<div>
+    <p>コメント件数：<%= @eatery.post_comments.count %></p>
+    <% @eatery.post_comments.each do |post_comment| %>
+      <%= link_to user_path(post_comment.user) do %>
+        <p> <%= attachment_image_tag post_comment.user, :profile_image, size: "60x50", format:'jpg', fallback:"no_image.jpg",class:"mt-3 rounded-circle"; %>
+            <%= post_comment.user.account %></p>
+        <% end %>
+          <%= post_comment.comment %>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <% if post_comment.user == current_user %>
+          <div>
+            <%= link_to "削除", eatery_post_comment_path(post_comment.eatery, post_comment), method: :delete %>
+          </div>
+      <% end %>
+    <% end %>
 </div>
+
 <div>
   <%= form_with(model:[@eatery, @post_comment], local: true) do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
+
+<div>
   <% if @eatery.user == current_user %>
   　<p>こちらの投稿記事への<p/>
     <p><%= link_to "編集", edit_eatery_path(@eatery),class:"btn btn-sm btn-success edit_book_7295" %><%= link_to "削除", eatery_path(@eatery), method: :delete ,class:"btn btn-sm btn-danger destroy_book_7295" ,data: { confirm: '本当に消しますか？' }%></p>
