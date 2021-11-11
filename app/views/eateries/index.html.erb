@@ -69,7 +69,7 @@
                   <% if eatery.images.attached? %>
                       <div class"article_images">
                          <% if eatery.images.count > 0%>
-                         <%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img border" %>
+                           <%=  image_tag eatery.images.first.variant(resize: "200x200").processed, class: "article-list-img border" %>
                          <% end %>
                       </div>
                    <% end %>
