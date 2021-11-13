@@ -32,9 +32,9 @@ end
   def create_notification_post_comment!(current_user, post_comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = PostComment.select(:user_id).where(eatery_id: id).where.not(user_id: current_user.id).distinct
-    temp_ids.each do |temp_id|
-      save_notification_post_comment!(current_user, post_comment_id, temp_id['user_id'])
-    end
+      temp_ids.each do |temp_id|
+        save_notification_post_comment!(current_user, post_comment_id, temp_id['user_id'])
+      end
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_post_comment!(current_user, post_comment_id, user_id) if temp_ids.blank?
   end
@@ -51,7 +51,7 @@ end
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
-    notification.save if notification.valid?
+      notification.save if notification.valid?
   end
 
   def favorited_by?(user)
