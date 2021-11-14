@@ -13,7 +13,7 @@
                             <% if eatery.images.attached? %>
                                  <div class"article_images pl-3">
                                      <% if eatery.images.count > 0%>
-                                     <%=  image_tag eatery.images.first.variant(resize: "150x150").processed, class: "article-list-img border" %>
+                                         <%=  image_tag eatery.images.first.variant(resize: "150x150").processed, class: "article-list-img border" %>
                                      <% end %>
                                  </div>
                             <% end %>
