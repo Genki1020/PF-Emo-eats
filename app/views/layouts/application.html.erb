@@ -18,8 +18,7 @@
     <% if flash[:alert] %>
      <div class="alert alert-danger text-center" role="alert"><strong><%= alert %></strong></div>
     <% end %>
-
-     <header class="p-3 mb-2 bg-danger text-white">
+  <header class="p-3 mb-2 bg-danger text-white">
       <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
          <h2 class="nav navbar-nav navbar-left title border" style="font-size: 30px;">
@@ -30,7 +29,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
-
      <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "Emo", eateries_path , class: 'fas fa-heart nav-link text-light'%>
@@ -50,10 +48,9 @@
       <li class="nav-item">
        <%= link_to "お問い合わせ",new_contact_path, class: 'fas fa-question-circle nav-link text-light' %>
       </li>
-
     <% else %>
       <li class="nav-item">
-      <%= link_to "Home", root_path , class: 'fas fa-home nav-link text-light '%>
+        <%= link_to "Home", root_path , class: 'fas fa-home nav-link text-light '%>
       </li>
       <li class="nav-item">
        <%= link_to "About", about_path , class: 'fas fa-link nav-link text-light' %>
@@ -68,7 +65,6 @@
        <%= link_to "お問い合わせ",new_contact_path, class: 'fas fa-question-circle nav-link text-light' %>
       </li>
     <% end %>
-
    </ul>
           </div>
         </div>
