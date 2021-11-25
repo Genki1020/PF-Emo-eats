@@ -1,10 +1,11 @@
-<h3>NewEmo</h3>
 <% if @eatery.errors.any? %>
     <%= @eatery.errors.count %>件のエラーが発生しました
   <% @eatery.errors.full_messages.each do |message| %>
     <%= message %>
   <% end %>
 <% end %>
+
+<h3>NewEmo</h3>
 
 <h5>AddEmo</h5>
 <div class="form-group">

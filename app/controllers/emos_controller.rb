@@ -31,7 +31,6 @@ class EmosController < ApplicationController
   end
 
 private
-
   def emo_params
     params.require(:emo).permit(:emo_name)
   end
