@@ -5,7 +5,6 @@ class FavoritesController < ApplicationController
     favorite.save
     @eatery.create_notification_favorite!(current_user)
   end
-
   def destroy
     @eatery = Eatery.find(params[:eatery_id])
     favorite = current_user.favorites.find_by(eatery_id: @eatery.id)
