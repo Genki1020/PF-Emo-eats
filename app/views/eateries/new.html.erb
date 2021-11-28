@@ -8,35 +8,35 @@
 <h3>NewEmo</h3>
 
 <h5>AddEmo</h5>
-<div class="form-group">
-  <%= form_with model: @emo, local:true do |f| %>
-    <th>※下記のセレクトに自分に合うエモがない場合は以下からエモを登録してください</th><br>
-    <th><%= f.text_field :emo_name, placeholder: "あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツ", size: 75 %>を食べたい！</th>
-    <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
-  <% end %>
-</div>
-<th></th>
+  <div class="form-group">
+    <%= form_with model: @emo, local:true do |f| %>
+      <th>※下記のセレクトに自分に合うエモがない場合は以下からエモを登録してください</th><br>
+      <th><%= f.text_field :emo_name, placeholder: "あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツ", size: 75 %>を食べたい！</th>
+      <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
+    <% end %>
+  </div>
+  <th></th>
 <%= form_with model: @eatery, local:true do |f| %>
-<div class="form-group">
-  <h5>あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツなど</h5>
-  <th><%= f.collection_select :emo_id, Emo.all, :id, :emo_name,{prompt: "選択してください"} %>を食べたい！</th>
-</div>
-<div class="form-group">
-  <h5>画像</h5>
-  <%= f.file_field :images, multiple: true %>
-  ※ctl+ or command+ で画像の複数選択が可能です
-</div>
-<div class="form-group">
-  <h5>ショップ名</h5>
-  <%= f.text_field :eatery_name , autofocus: true, class: 'form-control' %>
-</div>
-<div class="form-group">
-  <h5>住所</h5>
-  <%= f.text_area :address,  autofocus: true, class: 'form-control' %>
-</div>
-<div class="form-group">
-  <h5>説明</h5>
-  <%= f.text_area :report, size: '10x10', class: 'form-control' %>
-</div>
-  <%= f.submit '投稿', class: "btn btn-success" %>
+  <div class="form-group">
+    <h5>あなたのお店に入った時のエモを教えて！ex.さっぱりしたもの、映えるスイーツなど</h5>
+    <th><%= f.collection_select :emo_id, Emo.all, :id, :emo_name,{prompt: "選択してください"} %>を食べたい！</th>
+  </div>
+  <div class="form-group">
+    <h5>画像</h5>
+    <%= f.file_field :images, multiple: true %>
+    ※ctl+ or command+ で画像の複数選択が可能です
+  </div>
+  <div class="form-group">
+    <h5>ショップ名</h5>
+    <%= f.text_field :eatery_name , autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <h5>住所</h5>
+    <%= f.text_area :address,  autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <h5>説明</h5>
+    <%= f.text_area :report, size: '10x10', class: 'form-control' %>
+  </div>
+    <%= f.submit '投稿', class: "btn btn-success" %>
 <% end %>
