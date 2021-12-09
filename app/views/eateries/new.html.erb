@@ -1,8 +1,8 @@
 <% if @eatery.errors.any? %>
-    <%= @eatery.errors.count %>件のエラーが発生しました
-  <% @eatery.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
+  <%= @eatery.errors.count %>件のエラーが発生しました
+    <% @eatery.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
 <% end %>
 
 <h3>NewEmo</h3>
